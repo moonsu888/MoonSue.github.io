@@ -30,7 +30,7 @@
     <script>
         document.getElementById('loadData').addEventListener('click', function() {
             var xhr = new XMLHttpRequest();
-            var url = 'http://swopenAPI.seoul.go.kr/api/subway/66536375616d6f6f35396c796a4361/json/realtimeStationArrival/0/5/미아사거리'; 
+            var url = 'https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=%EC%A0%84%EC%B2%B4%EB%B3%B4%EA%B8%B0&count=15&sort=true'; 
             xhr.open('GET', url);
             xhr.onreadystatechange = function () {
                 if (this.readyState == xhr.DONE && (xhr.status == 200 || xhr.status == 201)) {
@@ -38,13 +38,13 @@
                     var arrivalTimesContainer = document.getElementById('arrivalTimes');
                     arrivalTimesContainer.innerHTML = ''; // 기존 데이터를 지우고 새로운 데이터로 갱신
 
-                    data.realtimeArrivalList.forEach(function(train) {
-                        if (train.updnLine === '하행') {
+                    data.realtimeArrivalList.forEach(function(seoul) {
+                
                             var div = document.createElement('div');
                             div.className = 'arrival-time';
-                            div.textContent = '열차 번호: ' + train.btrainNo + ' / 도착 예정 시간: ' + train.barvlDt + '초 후';
+                            div.textContent = '지역명: ' + seoul.area_nm + ' / 밀집도: ' + train.area_congest_lvl;
                             arrivalTimesContainer.appendChild(div);
-                        }
+                       
                     });
                 }
             };
