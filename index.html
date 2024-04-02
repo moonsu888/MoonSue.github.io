@@ -50,7 +50,7 @@
 
     <script>
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=%EC%A0%84%EC%B2%B4%EB%B3%B4%EA%B8%B0&count=15&sort=true", true);
+        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=%EC%A0%84%EC%B2%B4%EB%B3%B4%EA%B8%B0&count=115&sort=true", true);
         xhr.onload = function () {
             if (xhr.status >= 200 && xhr.status < 300) {
                 var data = JSON.parse(xhr.responseText);
