@@ -2,54 +2,73 @@
 <html lang="kr">
 <head>
     <meta charset="UTF-8">
-    <title>서울시 지하철 도착 정보</title>
+    <title>서울 공공 데이터 표시</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .arrival-time {
-            background-color: #f4f4f4;
+        th, td {
             border: 1px solid #ddd;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 8px;
+            text-align: left;
         }
-        button {
-            margin: 20px 0;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
+        th {
+            background-color: #f2f2f2;
+        }
+        td.congestion {
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>미아사거리 하행 차 도착 예정 시간</h1>
-    <button id="loadData">도착 정보 불러오기</button>
-    <div id="arrivalTimes"></div>
+    <h1>서울 지역 혼잡도 정보</h1>
+    <table id="congestionTable">
+        <thead>
+            <tr>
+                <th>지역명</th>
+                <th>혼잡도 색상</th>
+                <th>혼잡도 레벨</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
     <script>
-        document.getElementById('loadData').addEventListener('click', function() {
-            var xhr = new XMLHttpRequest();
-            var url = 'https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=%EC%A0%84%EC%B2%B4%EB%B3%B4%EA%B8%B0&count=15&sort=true'; 
-            xhr.open('GET', url);
-            xhr.onreadystatechange = function () {
-                if (this.readyState == xhr.DONE && (xhr.status == 200 || xhr.status == 201)) {
-                    var data = JSON.parse(this.responseText);
-                    var arrivalTimesContainer = document.getElementById('arrivalTimes');
-                    arrivalTimesContainer.innerHTML = ''; // 기존 데이터를 지우고 새로운 데이터로 갱신
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=%EC%A0%84%EC%B2%B4%EB%B3%B4%EA%B8%B0&count=15&sort=true", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var data = JSON.parse(xhr.responseText);
+                var tableBody = document.getElementById('congestionTable').getElementsByTagName('tbody')[0];
 
-                    data.realtimeArrivalList.forEach(function(seoul) {
-                
-                            var div = document.createElement('div');
-                            div.className = 'arrival-time';
-                            div.textContent = '지역명: ' + seoul.area_nm + ' / 밀집도: ' + train.area_congest_lvl;
-                            arrivalTimesContainer.appendChild(div);
-                       
-                    });
-                }
-            };
-            xhr.send();
-        });
+                data.row.forEach(function(item) {
+                    var row = tableBody.insertRow();
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+
+                    cell1.textContent = item.area_nm;
+                    cell2.textContent = item.congestion_color;
+                    cell2.style.backgroundColor = item.congestion_color;
+                    cell2.style.color = getContrastColor(item.congestion_color);
+                    cell3.textContent = item.area_congest_lvl;
+                });
+            }
+        };
+        xhr.send();
+
+        function getContrastColor(hexcolor){
+            // Simple function to calculate contrast color for better readability
+            var r = parseInt(hexcolor.substr(1,2),16);
+            var g = parseInt(hexcolor.substr(3,2),16);
+            var b = parseInt(hexcolor.substr(5,2),16);
+            var yiq = ((r*299)+(g*587)+(b*114))/1000;
+            return (yiq >= 128) ? 'black' : 'white';
+        }
     </script>
 </body>
 </html>
