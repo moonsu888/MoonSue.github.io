@@ -42,6 +42,7 @@
         .calm { background: #FFB100; }
         .button-container {
             margin-top: 20px;
+            margin-bottom: 20px;
         }
         .button {
             padding: 10px 20px;
@@ -50,6 +51,9 @@
             color: #fff;
             cursor: pointer;
             margin-right: 10px;
+            border: none;
+            outline: none;
+            transition: background-color 0.3s;
         }
         .button:hover {
             background-color: #0056b3;
@@ -68,13 +72,13 @@
     </div>
 
     <div id="cardContainer" class="card-container">
-     
+        <!-- 카드들이 여기에 들어갑니다 -->
     </div>
 
     <script>
         function getData(category) {
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
+            xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=" + encodeURIComponent(category) + "&count=15&sort=true", true);
             xhr.onload = function () {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     var data = JSON.parse(xhr.responseText);
@@ -86,7 +90,7 @@
                         card.className = 'card';
                         
                         var img = document.createElement('img');
-                
+                    
                         img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg';
                         img.alt = item.area_nm; // 접근성을 위한 alt 텍스트
 
@@ -118,3 +122,4 @@
     </script>
 </body>
 </html>
+
