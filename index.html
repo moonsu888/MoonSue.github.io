@@ -20,7 +20,6 @@
             width: 100%; /* 이미지가 카드 폭에 맞춰짐 */
             height: 150px; /* 이미지 높이 */
             object-fit: cover; /* 이미지 비율 유지하면서 채움 */
-            background: #eaeaea; /* 이미지가 없을 때 배경색 */
         }
         .card-info {
             padding: 15px;
@@ -44,43 +43,44 @@
     </style>
 </head>
 <body>
-    <h1>서울 혼잡도 정보</h1>
-    <div class="card-container" id="congestionCards">
-        <!-- 여기에 카드가 들어갑니다 -->
+    <h1>서울 지역 혼잡도 정보</h1>
+    <div id="cardContainer" class="card-container">
+      
     </div>
 
     <script>
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=%EC%A0%84%EC%B2%B4%EB%B3%B4%EA%B8%B0&count=115&sort=true", true);
+        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=%EC%A0%84%EC%B2%B4%EB%B3%B4%EA%B8%B0&count=15&sort=true", true);
         xhr.onload = function () {
             if (xhr.status >= 200 && xhr.status < 300) {
-                var response = JSON.parse(xhr.responseText);
-                var cardContainer = document.getElementById('congestionCards');
+                var data = JSON.parse(xhr.responseText);
+                var cardContainer = document.getElementById('cardContainer');
 
-                response.row.forEach(function (item) {
+                data.row.forEach(function(item) {
                     var card = document.createElement('div');
                     card.className = 'card';
+                    
+                    var img = document.createElement('img');
+                
+                    img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg'; 
+                    img.alt = item.area_nm; // 접근성을 위한 alt 텍스트
 
-                    var image = document.createElement('div');
-                    image.className = 'card-image';
+                    var cardInfo = document.createElement('div');
+                    cardInfo.className = 'card-info';
 
-                    var content = document.createElement('div');
-                    content.className = 'card-content';
-
-                    var title = document.createElement('h2');
+                    var title = document.createElement('div');
                     title.className = 'card-title';
                     title.textContent = item.area_nm;
 
-                    var status = document.createElement('div');
-                    status.className = 'card-status';
-                    status.style.backgroundColor = item.congestion_color;
-                    status.textContent = item.area_congest_lvl;
+                    var statusLabel = document.createElement('div');
+                    statusLabel.className = 'status-label';
+                    statusLabel.style.backgroundColor = item.congestion_color;
+                    statusLabel.textContent = item.area_congest_lvl;
 
-                    content.appendChild(title);
-                    content.appendChild(status);
-
-                    card.appendChild(image);
-                    card.appendChild(content);
+                    cardInfo.appendChild(title);
+                    cardInfo.appendChild(statusLabel);
+                    card.appendChild(img); // 이미지 추가
+                    card.appendChild(cardInfo);
 
                     cardContainer.appendChild(card);
                 });
