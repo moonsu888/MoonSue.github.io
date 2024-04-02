@@ -1,7 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>서울시 지하철 도착 정보</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .arrival-time {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            margin: 20px 0;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World!!</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <h1>미아사거리 하행 차 도착 예정 시간</h1>
+    <button id="loadData">도착 정보 불러오기</button>
+    <div id="arrivalTimes"></div>
+
+    <script>
+        document.getElementById('loadData').addEventListener('click', function() {
+            var xhr = new XMLHttpRequest();
+            var url = 'http://swopenAPI.seoul.go.kr/api/subway/66536375616d6f6f35396c796a4361/json/realtimeStationArrival/0/5/미아사거리'; 
+            xhr.open('GET', url);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == xhr.DONE && (xhr.status == 200 || xhr.status == 201)) {
+                    var data = JSON.parse(this.responseText);
+                    var arrivalTimesContainer = document.getElementById('arrivalTimes');
+                    arrivalTimesContainer.innerHTML = ''; // 기존 데이터를 지우고 새로운 데이터로 갱신
+
+                    data.realtimeArrivalList.forEach(function(train) {
+                        if (train.updnLine === '하행') {
+                            var div = document.createElement('div');
+                            div.className = 'arrival-time';
+                            div.textContent = '열차 번호: ' + train.btrainNo + ' / 도착 예정 시간: ' + train.barvlDt + '초 후';
+                            arrivalTimesContainer.appendChild(div);
+                        }
+                    });
+                }
+            };
+            xhr.send();
+        });
+    </script>
 </body>
 </html>
