@@ -30,7 +30,7 @@
     <script>
         document.getElementById('loadData').addEventListener('click', function() {
             var xhr = new XMLHttpRequest();
-            var url = 'https://swopenAPI.seoul.go.kr/api/subway/66536375616d6f6f35396c796a4361/json/realtimeStationArrival/0/5/미아사거리'; 
+            var url = 'http://swopenAPI.seoul.go.kr/api/subway/66536375616d6f6f35396c796a4361/json/realtimeStationArrival/0/5/미아사거리'; 
             xhr.open('GET', url);
             xhr.onreadystatechange = function () {
                 if (this.readyState == xhr.DONE && (xhr.status == 200 || xhr.status == 201)) {
