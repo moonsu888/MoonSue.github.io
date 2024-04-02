@@ -40,55 +40,81 @@
         .busy { background: #DD1F3D; }
         .moderate { background: #FF8040; }
         .calm { background: #FFB100; }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <h1>서울 지역 혼잡도 정보</h1>
+    <div class="button-container">
+        <button class="button" onclick="getData('전체보기')">전체보기</button>
+        <button class="button" onclick="getData('관광특구')">관광특구</button>
+        <button class="button" onclick="getData('공원')">공원</button>
+        <button class="button" onclick="getData('고궁·문화유산')">고궁·문화유산</button>
+        <button class="button" onclick="getData('발달상권')">발달상권</button>
+        <button class="button" onclick="getData('인구밀집지역')">인구밀집지역</button>
+    </div>
+
     <div id="cardContainer" class="card-container">
-      
+     
     </div>
 
     <script>
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=%EC%A0%84%EC%B2%B4%EB%B3%B4%EA%B8%B0&count=115&sort=true", true);
-        xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                var data = JSON.parse(xhr.responseText);
-                var cardContainer = document.getElementById('cardContainer');
+        function getData(category) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    var data = JSON.parse(xhr.responseText);
+                    var cardContainer = document.getElementById('cardContainer');
+                    cardContainer.innerHTML = ''; // 이전 카드를 모두 지웁니다.
 
-                data.row.forEach(function(item) {
-                    var card = document.createElement('div');
-                    card.className = 'card';
-                    
-                    var img = document.createElement('img');
+                    data.row.forEach(function(item) {
+                        var card = document.createElement('div');
+                        card.className = 'card';
+                        
+                        var img = document.createElement('img');
                 
-                    img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg'; 
-                    img.alt = item.area_nm; // 접근성을 위한 alt 텍스트
+                        img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg';
+                        img.alt = item.area_nm; // 접근성을 위한 alt 텍스트
 
-                    var cardInfo = document.createElement('div');
-                    cardInfo.className = 'card-info';
+                        var cardInfo = document.createElement('div');
+                        cardInfo.className = 'card-info';
 
-                    var title = document.createElement('div');
-                    title.className = 'card-title';
-                    title.textContent = item.area_nm;
+                        var title = document.createElement('div');
+                        title.className = 'card-title';
+                        title.textContent = item.area_nm;
 
-                    var statusLabel = document.createElement('div');
-                    statusLabel.className = 'status-label';
-                    statusLabel.style.backgroundColor = item.congestion_color;
-                    statusLabel.textContent = item.area_congest_lvl;
+                        var statusLabel = document.createElement('div');
+                        statusLabel.className = 'status-label';
+                        statusLabel.style.backgroundColor = item.congestion_color;
+                        statusLabel.textContent = item.area_congest_lvl;
 
-                    cardInfo.appendChild(title);
-                    cardInfo.appendChild(statusLabel);
-                    card.appendChild(img); // 이미지 추가
-                    card.appendChild(cardInfo);
+                        cardInfo.appendChild(title);
+                        cardInfo.appendChild(statusLabel);
+                        card.appendChild(img); // 이미지 추가
+                        card.appendChild(cardInfo);
 
-                    cardContainer.appendChild(card);
-                });
-            } else {
-                console.error('The request failed!');
-            }
-        };
-        xhr.send();
+                        cardContainer.appendChild(card);
+                    });
+                } else {
+                    console.error('The request failed!');
+                }
+            };
+            xhr.send();
+        }
     </script>
 </body>
 </html>
