@@ -1,11 +1,10 @@
 ---
 layout: post
-title: How I Rest From Work
-date: 2024-04-03 13:32:20 +0300
-description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes.
-img: i-rest.jpg
-fig-caption: 
-tags: [Holidays, Hawaii]
+title: The Best Organizer Software
+date: 2017-09-12 00:00:00 +0300
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: software.jpg # Add image post (optional)
+tags: [Productivity, Software] # add tag
 ---
 
 ## 서울 관광지 혼잡도

@@ -1,129 +1,30 @@
 ---
 layout: post
 title: How I Rest From Work
-date: 2024-04-03 13:32:20 +0300
-description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes.
-img: i-rest.jpg
-fig-caption: 
+date: 2017-09-12 13:32:20 +0300
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: i-rest.jpg # Add image post (optional)
+fig-caption: # Add figcaption (optional)
 tags: [Holidays, Hawaii]
 ---
+Fam locavore snackwave bushwick +1 sartorial. Selfies portland knausgaard synth. Pop-up art party marfa deep v pitchfork subway tile 3 wolf moon. Ennui pinterest tumblr yr, adaptogen succulents copper mug twee. Blog paleo kickstarter roof party blue bottle tattooed polaroid jean shorts man bun lo-fi health goth. Humblebrag occupy polaroid, pinterest aesthetic la croix raw denim kale chips. 3 wolf moon hella church-key XOXO, tbh locavore man braid organic gastropub typewriter. Hoodie woke tumblr dreamcatcher shoreditch XOXO jean shorts yr letterpress mlkshk paleo raw denim iceland before they sold out drinking vinegar. Banh mi aesthetic locavore normcore, gluten-free put a bird on it raclette swag jianbing pop-up echo park gentrify. Stumptown brooklyn godard tumeric ethical. Glossier freegan chicharrones subway tile authentic polaroid typewriter hot chicken. Thundercats small batch heirloom meggings.
 
-## 서울 관광지 혼잡도
+## Plaid ramps kitsch woke pork belly
+90's yr crucifix, selvage 8-bit listicle forage cliche shoreditch hammock microdosing synth. Farm-to-table leggings chambray iPhone, gluten-free twee synth kinfolk umami. Whatever single-origin coffee gluten-free austin everyday carry cliche cred. Plaid ramps kitsch woke pork belly organic. Trust fund whatever coloring book kombucha brooklyn. Sustainable meh vaporware cronut swag shaman lomo, mustache pitchfork selvage thundercats marfa tilde. Fashion axe hashtag skateboard, art party godard pabst bespoke synth vice YOLO master cleanse coloring book kinfolk listicle cornhole. Try-hard mixtape umami fanny pack man bun gastropub franzen tbh. Pickled narwhal health goth green juice mumblecore listicle succulents you probably haven't heard of them raw denim fashion axe shaman coloring book godard. Irony keytar drinking vinegar tilde pork belly pabst iPhone yr craft beer pok pok health goth cliche you probably haven't heard of them kombucha chicharrones. Direct trade hella roof party chia. Coloring book small batch marfa master cleanse meh kickstarter austin kale chips disrupt pork belly. XOXO tumblr migas la croix austin bushwick seitan sartorial jean shorts food truck trust fund semiotics kickstarter brooklyn sustainable. Umami knausgaard mixtape marfa. Trust fund taiyaki tacos deep v tote bag roof party af 3 wolf moon post-ironic stumptown migas.
 
-이곳은 본문 내용이 추가될 수 있는 영역입니다. Markdown 형식이나 HTML 태그를 사용하여 내용을 추가할 수 있습니다.
+![I and My friends]({{site.baseurl}}/assets/img/we-in-rest.jpg)
 
-<!-- HTML과 JavaScript 코드 시작 -->
-<div class="button-container">
-    <button class="button" onclick="getData('전체보기')">전체보기</button>
-    <button class="button" onclick="getData('관광특구')">관광특구</button>
-    <button class="button" onclick="getData('공원')">공원</button>
-    <button class="button" onclick="getData('고궁·문화유산')">고궁·문화유산</button>
-    <button class="button" onclick="getData('발달상권')">발달상권</button>
-    <button class="button" onclick="getData('인구밀집지역')">인구밀집지역</button>
-</div>
+Selfies sriracha taiyaki woke squid synth intelligentsia PBR&B ethical kickstarter art party neutra biodiesel scenester. Health goth kogi VHS fashion axe glossier disrupt, vegan quinoa. Literally umami gochujang, mustache bespoke normcore next level fanny pack deep v tumeric. Shaman vegan affogato chambray. Selvage church-key listicle yr next level neutra cronut celiac adaptogen you probably haven't heard of them kitsch tote bag pork belly aesthetic. Succulents wolf stumptown art party poutine. Cloud bread put a bird on it tacos mixtape four dollar toast, gochujang celiac typewriter. Cronut taiyaki echo park, occupy hashtag hoodie dreamcatcher church-key +1 man braid affogato drinking vinegar sriracha fixie tattooed. Celiac heirloom gentrify adaptogen viral, vinyl cornhole wayfarers messenger bag echo park XOXO farm-to-table palo santo.
 
-<div id="cardContainer" class="card-container">
-    <!-- 카드들이 여기에 들어갑니다 -->
-</div>
+>Hexagon shoreditch beard, man braid blue bottle green juice thundercats viral migas next level ugh. Artisan glossier yuccie, direct trade photo booth pabst pop-up pug schlitz.
 
-<style>
-    .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-    .card {
-        width: 250px;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        background: #fff;
-    }
-    .card img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-    }
-    .card-info {
-        padding: 15px;
-    }
-    .card-title {
-        font-size: 16px;
-        font-weight: bold;
-        margin: 5px 0;
-    }
-    .status-label {
-        display: inline-block;
-        padding: 5px 10px;
-        border-radius: 20px;
-        color: #fff;
-        text-align: center;
-        margin-top: 10px;
-    }
-    .busy { background: #DD1F3D; }
-    .moderate { background: #FF8040; }
-    .calm { background: #FFB100; }
-    .button-container {
-        margin-top: 20px;
-        margin-bottom: 30px;
-    }
-    .button {
-        padding: 10px 20px;
-        border-radius: 5px;
-        background-color: #007bff;
-        color: #fff;
-        cursor: pointer;
-        margin-right: 10px;
-        border: none;
-        outline: none;
-        transition: background-color 0.3s;
-    }
-    .button:hover {
-        background-color: #0056b3;
-    }
-</style>
+Cronut lumbersexual fingerstache asymmetrical, single-origin coffee roof party unicorn. Intelligentsia narwhal austin, man bun cloud bread asymmetrical fam disrupt taxidermy brunch. Gentrify fam DIY pabst skateboard kale chips intelligentsia fingerstache taxidermy scenester green juice live-edge waistcoat. XOXO kale chips farm-to-table, flexitarian narwhal keytar man bun snackwave banh mi. Semiotics pickled taiyaki cliche cold-pressed. Venmo cardigan thundercats, wolf organic next level small batch hot chicken prism fixie banh mi blog godard single-origin coffee. Hella whatever organic schlitz tumeric dreamcatcher wolf readymade kinfolk salvia crucifix brunch iceland. Literally meditation four loko trust fund. Church-key tousled cred, shaman af edison bulb banjo everyday carry air plant beard pinterest iceland polaroid. Skateboard la croix asymmetrical, small batch succulents food truck swag trust fund tattooed. Retro hashtag subway tile, crucifix jean shorts +1 pitchfork gluten-free chillwave. Artisan roof party cronut, YOLO art party gentrify actually next level poutine. Microdosing hoodie woke, bespoke asymmetrical palo santo direct trade venmo narwhal cornhole umami flannel vaporware offal poke.
 
-<script>
-    function getData(category) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
-        xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                var data = JSON.parse(xhr.responseText);
-                var cardContainer = document.getElementById('cardContainer');
-                cardContainer.innerHTML = '';
+* Hexagon shoreditch beard
+* Intelligentsia narwhal austin
+* Literally meditation four
+* Microdosing hoodie woke
 
-                data.row.forEach(function(item) {
-                    var card = document.createElement('div');
-                    card.className = 'card';
+Wayfarers lyft DIY sriracha succulents twee adaptogen crucifix gastropub actually hexagon raclette franzen polaroid la croix. Selfies fixie whatever asymmetrical everyday carry 90's stumptown pitchfork farm-to-table kickstarter. Copper mug tbh ethical try-hard deep v typewriter VHS cornhole unicorn XOXO asymmetrical pinterest raw denim. Skateboard small batch man bun polaroid neutra. Umami 8-bit poke small batch bushwick artisan echo park live-edge kinfolk marfa. Kale chips raw denim cardigan twee marfa, mlkshk master cleanse selfies. Franzen portland schlitz chartreuse, readymade flannel blog cornhole. Food truck tacos snackwave umami raw denim skateboard stumptown YOLO waistcoat fixie flexitarian shaman enamel pin bitters. Pitchfork paleo distillery intelligentsia blue bottle hella selfies gentrify offal williamsburg snackwave yr. Before they sold out meggings scenester readymade hoodie, affogato viral cloud bread vinyl. Thundercats man bun sriracha, neutra swag knausgaard jean shorts. Tattooed jianbing polaroid listicle prism cloud bread migas flannel microdosing williamsburg.
 
-                    var img = document.createElement('img');
-                    img.src = item.image_url; // 예시 URL
-                    img.alt = item.area_nm;
-
-                    var cardInfo = document.createElement('div');
-                    cardInfo.className = 'card-info';
-
-                    var title = document.createElement('div');
-                    title.className = 'card-title';
-                    title.textContent = item.area_nm;
-
-                    var statusLabel = document.createElement('div');
-                    statusLabel.className = 'status-label ' + item.congestion_level;
-                    statusLabel.textContent = item.area_congest_lvl;
-
-                    cardInfo.appendChild(title);
-                    cardInfo.appendChild(statusLabel);
-                    card.appendChild(img);
-                    card.appendChild(cardInfo);
-
-                    cardContainer.appendChild(card);
-                });
-            } else {
-                console.error('The request failed!');
-            }
-        };
-        xhr.send();
-    }
-</script>
-<!-- HTML과 JavaScript 코드 끝 -->
+Echo park try-hard irony tbh vegan pok pok. Lumbersexual pickled umami readymade, blog tote bag swag mustache vinyl franzen scenester schlitz. Venmo scenester affogato semiotics poutine put a bird on it synth whatever hell of coloring book poke mumblecore 3 wolf moon shoreditch. Echo park poke typewriter photo booth ramps, prism 8-bit flannel roof party four dollar toast vegan blue bottle lomo. Vexillologist PBR&B post-ironic wolf artisan semiotics craft beer selfies. Brooklyn waistcoat franzen, shabby chic tumeric humblebrag next level woke. Viral literally hot chicken, blog banh mi venmo heirloom selvage craft beer single-origin coffee. Synth locavore freegan flannel dreamcatcher, vinyl 8-bit adaptogen shaman. Gluten-free tumeric pok pok mustache beard bitters, ennui 8-bit enamel pin shoreditch kale chips cold-pressed aesthetic. Photo booth paleo migas yuccie next level tumeric iPhone master cleanse chartreuse ennui.
