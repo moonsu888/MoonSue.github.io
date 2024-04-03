@@ -1,22 +1,129 @@
 ---
 layout: post
-title: The Best Organizer Software
-date: 2017-09-12 00:00:00 +0300
-description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
-img: software.jpg # Add image post (optional)
-tags: [Productivity, Software] # add tag
+title: How I Rest From Work
+date: 2024-04-03 13:32:20 +0300
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes.
+img: i-rest.jpg
+fig-caption: 
+tags: [Holidays, Hawaii]
 ---
 
-Church-key blog messenger bag, selfies umami man braid mlkshk. Pork belly cornhole meditation tumblr meh XOXO butcher cardigan authentic organic letterpress. Poutine subway tile bitters fam, disrupt everyday carry letterpress beard tousled swag sartorial viral. Retro af 3 wolf moon heirloom, pork belly man bun DIY chillwave. Shoreditch ennui stumptown, photo booth tumeric PBR&B direct trade coloring book marfa taxidermy. Gentrify brunch typewriter woke freegan. Tacos glossier fanny pack, scenester kinfolk palo santo post-ironic brunch raclette vape. Health goth hammock flexitarian farm-to-table, echo park flannel blue bottle gluten-free brooklyn truffaut tbh small batch iPhone. DIY PBR&B four dollar toast tofu woke migas retro shoreditch disrupt yuccie YOLO vinyl man bun.
+## 서울 관광지 혼잡도
 
-### Church-key blog messenger bag
+이곳은 본문 내용이 추가될 수 있는 영역입니다. Markdown 형식이나 HTML 태그를 사용하여 내용을 추가할 수 있습니다.
 
-Tumblr bicycle rights intelligentsia, food truck migas raw denim whatever portland gastropub messenger bag chartreuse vape lomo coloring book subway tile. Yr pabst meggings tattooed four dollar toast. Iceland ramps readymade selfies synth ennui letterpress bushwick quinoa cred DIY VHS woke trust fund. Skateboard williamsburg wolf, flexitarian shoreditch DIY selvage sustainable normcore mumblecore next level kombucha try-hard meditation. Gentrify plaid microdosing, master cleanse ugh crucifix pop-up. Wolf bushwick street art tumeric. Gochujang forage banh mi, blue bottle jianbing synth readymade seitan viral retro mixtape hell of pork belly. Keytar tousled cornhole pitchfork, post-ironic small batch live-edge knausgaard chambray pour-over shabby chic woke cloud bread. Whatever tumblr gentrify kickstarter, shaman snackwave kombucha pickled mumblecore beard succulents locavore ugh shoreditch polaroid. Wayfarers crucifix tattooed twee. Yr listicle crucifix fingerstache farm-to-table. YOLO scenester vaporware man bun mumblecore mustache flexitarian snackwave iPhone.
+<!-- HTML과 JavaScript 코드 시작 -->
+<div class="button-container">
+    <button class="button" onclick="getData('전체보기')">전체보기</button>
+    <button class="button" onclick="getData('관광특구')">관광특구</button>
+    <button class="button" onclick="getData('공원')">공원</button>
+    <button class="button" onclick="getData('고궁·문화유산')">고궁·문화유산</button>
+    <button class="button" onclick="getData('발달상권')">발달상권</button>
+    <button class="button" onclick="getData('인구밀집지역')">인구밀집지역</button>
+</div>
 
-Hella lo-fi banjo, disrupt tofu prism raclette. Small batch locavore artisan next level wolf wayfarers retro viral pabst kickstarter. Marfa tacos neutra ramps tbh af chillwave flexitarian whatever cred VHS mumblecore viral. Hell of retro vegan chambray tacos VHS four dollar toast tote bag. Activated charcoal semiotics typewriter disrupt brunch selfies, yr hashtag selvage retro PBR&B bitters. Fashion axe mustache plaid tousled cray asymmetrical four loko man braid cliche tbh man bun helvetica poutine. Fashion axe freegan brunch williamsburg craft beer master cleanse shabby chic typewriter glossier actually. Plaid tumblr hexagon neutra slow-carb mumblecore. Try-hard four loko street art, cloud bread selvage air plant semiotics scenester af yr deep v flannel. Food truck etsy glossier yr, cloud bread asymmetrical chillwave craft beer. Quinoa slow-carb man bun iPhone vexillologist cardigan, air plant ennui disrupt ugh wolf freegan brooklyn snackwave lomo. Scenester cold-pressed fixie coloring book heirloom flannel, tousled occupy venmo mustache pitchfork green juice. VHS neutra 8-bit roof party. Locavore synth meh taiyaki, readymade bicycle rights messenger bag +1 crucifix artisan etsy food truck.
+<div id="cardContainer" class="card-container">
+    <!-- 카드들이 여기에 들어갑니다 -->
+</div>
 
-### Pour-over blue bottle woke listicle
+<style>
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .card {
+        width: 250px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        background: #fff;
+    }
+    .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+    .card-info {
+        padding: 15px;
+    }
+    .card-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+    .status-label {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 20px;
+        color: #fff;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .busy { background: #DD1F3D; }
+    .moderate { background: #FF8040; }
+    .calm { background: #FFB100; }
+    .button-container {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        margin-right: 10px;
+        border: none;
+        outline: none;
+        transition: background-color 0.3s;
+    }
+    .button:hover {
+        background-color: #0056b3;
+    }
+</style>
 
-Pour-over blue bottle woke listicle, pitchfork 90's post-ironic scenester poutine ennui four loko ramps kickstarter. Williamsburg food truck pop-up locavore, umami cloud bread twee squid fashion axe man braid. Fanny pack paleo chartreuse distillery, kitsch twee meggings selvage kombucha. Keffiyeh actually prism listicle. Taxidermy authentic iPhone migas vegan copper mug. Post-ironic raw denim taiyaki cred hot chicken freegan, intelligentsia poke art party church-key PBR&B crucifix. Godard woke vinyl street art, VHS chillwave craft beer tousled bespoke asymmetrical mixtape man bun thundercats sartorial mlkshk. Meggings heirloom XOXO gentrify try-hard stumptown. Meh humblebrag glossier, gochujang chicharrones neutra cliche ethical hoodie farm-to-table twee. Messenger bag offal pug bespoke, put a bird on it tote bag literally.
+<script>
+    function getData(category) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                var data = JSON.parse(xhr.responseText);
+                var cardContainer = document.getElementById('cardContainer');
+                cardContainer.innerHTML = '';
 
-Everyday carry kinfolk shoreditch normcore try-hard etsy messenger bag venmo enamel pin. Try-hard fanny pack thundercats farm-to-table retro twee. Godard photo booth tofu 90's. Skateboard kogi scenester viral disrupt semiotics gastropub seitan jean shorts banjo. Humblebrag knausgaard waistcoat mixtape. Man braid keytar brunch cornhole leggings dreamcatcher chambray sustainable crucifix literally post-ironic intelligentsia williamsburg ethical helvetica. Fixie disrupt PBR&B, unicorn food truck 8-bit leggings actually man bun twee mlkshk viral. Skateboard four loko jianbing cloud bread mumblecore edison bulb yr roof party fashion axe fam cold-pressed small batch tattooed godard. Bushwick yuccie thundercats schlitz listicle skateboard quinoa. Gentrify hot chicken pop-up keytar master cleanse pork belly. Irony pitchfork la croix neutra freegan. Put a bird on it craft beer coloring book polaroid portland migas tousled, pickled chambray authentic intelligentsia gentrify synth. Letterpress tumblr wolf normcore selvage. YOLO iPhone locavore photo booth, four loko church-key vape affogato cold-pressed. Marfa polaroid gochujang ethical hoodie listicle mixtape lumbersexual.
+                data.row.forEach(function(item) {
+                    var card = document.createElement('div');
+                    card.className = 'card';
+
+                    var img = document.createElement('img');
+                    img.src = item.image_url; // 예시 URL
+                    img.alt = item.area_nm;
+
+                    var cardInfo = document.createElement('div');
+                    cardInfo.className = 'card-info';
+
+                    var title = document.createElement('div');
+                    title.className = 'card-title';
+                    title.textContent = item.area_nm;
+
+                    var statusLabel = document.createElement('div');
+                    statusLabel.className = 'status-label ' + item.congestion_level;
+                    statusLabel.textContent = item.area_congest_lvl;
+
+                    cardInfo.appendChild(title);
+                    cardInfo.appendChild(statusLabel);
+                    card.appendChild(img);
+                    card.appendChild(cardInfo);
+
+                    cardContainer.appendChild(card);
+                });
+            } else {
+                console.error('The request failed!');
+            }
+        };
+        xhr.send();
+    }
+</script>
+<!-- HTML과 JavaScript 코드 끝 -->
