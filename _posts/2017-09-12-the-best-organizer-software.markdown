@@ -9,7 +9,7 @@ tags: [Productivity, Software] # add tag
 
 ## 서울 관광지 혼잡도
 
-서울 데이트 어디서 할까 ?
+
 
 <!-- HTML과 JavaScript 코드 시작 -->
 <div class="button-container">
@@ -96,8 +96,8 @@ tags: [Productivity, Software] # add tag
                     var card = document.createElement('div');
                     card.className = 'card';
 
-                     img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg';
-                    
+                    var img = document.createElement('img');
+                    img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg';
                     img.alt = item.area_nm;
 
                     var cardInfo = document.createElement('div');
