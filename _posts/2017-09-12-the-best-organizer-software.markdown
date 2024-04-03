@@ -9,8 +9,21 @@ tags: [Productivity, Software] # add tag
 
 ## 서울 관광지 혼잡도
 
-데이트 하기 딱좋은 곳은 어디일까
+서울 데이트 어디서 할까 ?
 
+<!-- HTML과 JavaScript 코드 시작 -->
+<div class="button-container">
+    <button class="button" onclick="getData('전체보기')">전체보기</button>
+    <button class="button" onclick="getData('관광특구')">관광특구</button>
+    <button class="button" onclick="getData('공원')">공원</button>
+    <button class="button" onclick="getData('고궁·문화유산')">고궁·문화유산</button>
+    <button class="button" onclick="getData('발달상권')">발달상권</button>
+    <button class="button" onclick="getData('인구밀집지역')">인구밀집지역</button>
+</div>
+
+<div id="cardContainer" class="card-container">
+    <!-- 카드들이 여기에 들어갑니다 -->
+</div>
 
 <style>
     .card-container {
@@ -69,59 +82,47 @@ tags: [Productivity, Software] # add tag
     }
 </style>
 
-<!-- HTML과 JavaScript 코드 시작 -->
-<div class="button-container">
-    <button class="button" onclick="getData('전체보기')">전체보기</button>
-    <button class="button" onclick="getData('관광특구')">관광특구</button>
-    <button class="button" onclick="getData('공원')">공원</button>
-    <button class="button" onclick="getData('고궁·문화유산')">고궁·문화유산</button>
-    <button class="button" onclick="getData('발달상권')">발달상권</button>
-    <button class="button" onclick="getData('인구밀집지역')">인구밀집지역</button>
-</div>
-
-<div id="cardContainer" class="card-container">
-    <!-- 카드들이 여기에 들어갑니다 -->
-</div>
-
 <script>
+    function getData(category) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                var data = JSON.parse(xhr.responseText);
+                var cardContainer = document.getElementById('cardContainer');
+                cardContainer.innerHTML = '';
 
-        function getData(category) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=115&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
-            xhr.onload = function () {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    var data = JSON.parse(xhr.responseText);
-                    var cardContainer = document.getElementById('cardContainer');
-                    cardContainer.innerHTML = ''; // 이전 카드를 모두 지웁니다.
-                    data.row.forEach(function(item) {
-                        var card = document.createElement('div');
-                        card.className = 'card';
-                        
-                        var img = document.createElement('img');
+                data.row.forEach(function(item) {
+                    var card = document.createElement('div');
+                    card.className = 'card';
+
+                     img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg';
                     
-                        img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg';
-                        img.alt = item.area_nm; // 접근성을 위한 alt 텍스트
-                        var cardInfo = document.createElement('div');
-                        cardInfo.className = 'card-info';
-                        var title = document.createElement('div');
-                        title.className = 'card-title';
-                        title.textContent = item.area_nm;
-                        var statusLabel = document.createElement('div');
-                        statusLabel.className = 'status-label';
-                        statusLabel.style.backgroundColor = item.congestion_color;
-                        statusLabel.textContent = item.area_congest_lvl;
-                        cardInfo.appendChild(title);
-                        cardInfo.appendChild(statusLabel);
-                        card.appendChild(img); // 이미지 추가
-                        card.appendChild(cardInfo);
-                        cardContainer.appendChild(card);
-                    });
-                } else {
-                    console.error('The request failed!');
-                }
-            };
-            xhr.send();
-        }
-</script>
+                    img.alt = item.area_nm;
 
+                    var cardInfo = document.createElement('div');
+                    cardInfo.className = 'card-info';
+
+                    var title = document.createElement('div');
+                    title.className = 'card-title';
+                    title.textContent = item.area_nm;
+
+                    var statusLabel = document.createElement('div');
+                    statusLabel.className = 'status-label ' + item.congestion_level;
+                    statusLabel.textContent = item.area_congest_lvl;
+
+                    cardInfo.appendChild(title);
+                    cardInfo.appendChild(statusLabel);
+                    card.appendChild(img);
+                    card.appendChild(cardInfo);
+
+                    cardContainer.appendChild(card);
+                });
+            } else {
+                console.error('The request failed!');
+            }
+        };
+        xhr.send();
+    }
+</script>
 <!-- HTML과 JavaScript 코드 끝 -->
