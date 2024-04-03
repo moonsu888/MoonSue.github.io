@@ -11,19 +11,6 @@ tags: [Productivity, Software] # add tag
 
 데이트 하기 딱좋은 곳은 어디일까
 
-<!-- HTML과 JavaScript 코드 시작 -->
-<div class="button-container">
-    <button class="button" onclick="getData('전체보기')">전체보기</button>
-    <button class="button" onclick="getData('관광특구')">관광특구</button>
-    <button class="button" onclick="getData('공원')">공원</button>
-    <button class="button" onclick="getData('고궁·문화유산')">고궁·문화유산</button>
-    <button class="button" onclick="getData('발달상권')">발달상권</button>
-    <button class="button" onclick="getData('인구밀집지역')">인구밀집지역</button>
-</div>
-
-<div id="cardContainer" class="card-container">
-    <!-- 카드들이 여기에 들어갑니다 -->
-</div>
 
 <style>
     .card-container {
@@ -82,7 +69,23 @@ tags: [Productivity, Software] # add tag
     }
 </style>
 
+<body>
+<!-- HTML과 JavaScript 코드 시작 -->
+<div class="button-container">
+    <button class="button" onclick="getData('전체보기')">전체보기</button>
+    <button class="button" onclick="getData('관광특구')">관광특구</button>
+    <button class="button" onclick="getData('공원')">공원</button>
+    <button class="button" onclick="getData('고궁·문화유산')">고궁·문화유산</button>
+    <button class="button" onclick="getData('발달상권')">발달상권</button>
+    <button class="button" onclick="getData('인구밀집지역')">인구밀집지역</button>
+</div>
+
+<div id="cardContainer" class="card-container">
+    <!-- 카드들이 여기에 들어갑니다 -->
+</div>
+
 <script>
+
         function getData(category) {
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=115&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
@@ -121,4 +124,5 @@ tags: [Productivity, Software] # add tag
             xhr.send();
         }
 </script>
+</body>
 <!-- HTML과 JavaScript 코드 끝 -->
