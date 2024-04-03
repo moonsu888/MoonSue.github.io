@@ -106,16 +106,17 @@ tags: [Productivity, Software] # add tag
                     title.className = 'card-title';
                     title.textContent = item.area_nm;
 
-                    var statusLabel = document.createElement('div');
-                    statusLabel.className = 'status-label ' + item.congestion_level;
-                    statusLabel.textContent = item.area_congest_lvl;
+                        var statusLabel = document.createElement('div');
+                        statusLabel.className = 'status-label';
+                        statusLabel.style.backgroundColor = item.congestion_color;
+                        statusLabel.textContent = item.area_congest_lvl;
 
-                    cardInfo.appendChild(title);
-                    cardInfo.appendChild(statusLabel);
-                    card.appendChild(img);
-                    card.appendChild(cardInfo);
+                        cardInfo.appendChild(title);
+                        cardInfo.appendChild(statusLabel);
+                        card.appendChild(img); // 이미지 추가
+                        card.appendChild(cardInfo);
 
-                    cardContainer.appendChild(card);
+                        cardContainer.appendChild(card);
                 });
             } else {
                 console.error('The request failed!');
