@@ -83,7 +83,6 @@ tags: [Productivity, Software] # add tag
 </style>
 
 <script>
-    <script>
         function getData(category) {
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=115&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
