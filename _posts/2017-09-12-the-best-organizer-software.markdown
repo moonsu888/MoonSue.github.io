@@ -30,6 +30,7 @@ tags: [Productivity, Software] # add tag
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
+        justify-content: center; /* 중앙 정렬을 추가합니다. */
     }
     .card {
         width: 250px;
@@ -63,7 +64,10 @@ tags: [Productivity, Software] # add tag
     .moderate { background: #FF8040; }
     .calm { background: #FFB100; }
     .button-container {
-        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
         margin-bottom: 30px;
     }
     .button {
@@ -72,7 +76,6 @@ tags: [Productivity, Software] # add tag
         background-color: #007bff;
         color: #fff;
         cursor: pointer;
-        margin-right: 10px;
         border: none;
         outline: none;
         transition: background-color 0.3s;
@@ -80,7 +83,18 @@ tags: [Productivity, Software] # add tag
     .button:hover {
         background-color: #0056b3;
     }
+
+    @media (max-width: 768px) {
+        .card {
+            width: 100%; /* 모바일에서는 카드의 너비를 화면 너비에 맞춥니다. */
+        }
+        .button {
+            width: 100%; /* 모바일에서 버튼의 너비를 조정합니다. */
+            margin-bottom: 10px; /* 버튼 간의 마진을 추가합니다. */
+        }
+    }
 </style>
+
 
 <script>
     function getData(category) {
