@@ -6,10 +6,9 @@ description: You’ll find this post in your `_posts` directory. Go ahead and ed
 img: software.jpg # Add image post (optional)
 tags: [Productivity, Software] # add tag
 ---
-
 ## 서울 관광지 혼잡도
 
-
+이곳은 본문 내용이 추가될 수 있는 영역입니다. Markdown 형식이나 HTML 태그를 사용하여 내용을 추가할 수 있습니다.
 
 <!-- HTML과 JavaScript 코드 시작 -->
 <div class="button-container">
@@ -83,48 +82,46 @@ tags: [Productivity, Software] # add tag
 </style>
 
 <script>
-        function getData(category) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=115&category=" + encodeURIComponent(category) + "&count=15&sort=true", true);
-            xhr.onload = function () {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    var data = JSON.parse(xhr.responseText);
-                    var cardContainer = document.getElementById('cardContainer');
-                    cardContainer.innerHTML = ''; // 이전 카드를 모두 지웁니다.
+    function getData(category) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                var data = JSON.parse(xhr.responseText);
+                var cardContainer = document.getElementById('cardContainer');
+                cardContainer.innerHTML = '';
 
-                    data.row.forEach(function(item) {
-                        var card = document.createElement('div');
-                        card.className = 'card';
-                        
-                        var img = document.createElement('img');
-                    
-                        img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg';
-                        img.alt = item.area_nm; // 접근성을 위한 alt 텍스트
+                data.row.forEach(function(item) {
+                    var card = document.createElement('div');
+                    card.className = 'card';
 
-                        var cardInfo = document.createElement('div');
-                        cardInfo.className = 'card-info';
+                    var img = document.createElement('img');
+                    img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg';
+                    img.alt = item.area_nm;
 
-                        var title = document.createElement('div');
-                        title.className = 'card-title';
-                        title.textContent = item.area_nm;
+                    var cardInfo = document.createElement('div');
+                    cardInfo.className = 'card-info';
 
-                        var statusLabel = document.createElement('div');
-                        statusLabel.className = 'status-label';
-                        statusLabel.style.backgroundColor = item.congestion_color;
-                        statusLabel.textContent = item.area_congest_lvl;
+                    var title = document.createElement('div');
+                    title.className = 'card-title';
+                    title.textContent = item.area_nm;
 
-                        cardInfo.appendChild(title);
-                        cardInfo.appendChild(statusLabel);
-                        card.appendChild(img); // 이미지 추가
-                        card.appendChild(cardInfo);
+                    var statusLabel = document.createElement('div');
+                    statusLabel.className = 'status-label ' + item.congestion_level;
+                    statusLabel.textContent = item.area_congest_lvl;
 
-                        cardContainer.appendChild(card);
-                    });
-                } else {
-                    console.error('The request failed!');
-                }
-            };
-            xhr.send();
-        }
+                    cardInfo.appendChild(title);
+                    cardInfo.appendChild(statusLabel);
+                    card.appendChild(img);
+                    card.appendChild(cardInfo);
+
+                    cardContainer.appendChild(card);
+                });
+            } else {
+                console.error('The request failed!');
+            }
+        };
+        xhr.send();
+    }
 </script>
 <!-- HTML과 JavaScript 코드 끝 -->
