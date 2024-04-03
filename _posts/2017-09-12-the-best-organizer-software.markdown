@@ -69,7 +69,6 @@ tags: [Productivity, Software] # add tag
     }
 </style>
 
-<body>
 <!-- HTML과 JavaScript 코드 시작 -->
 <div class="button-container">
     <button class="button" onclick="getData('전체보기')">전체보기</button>
@@ -124,5 +123,5 @@ tags: [Productivity, Software] # add tag
             xhr.send();
         }
 </script>
-</body>
+
 <!-- HTML과 JavaScript 코드 끝 -->
