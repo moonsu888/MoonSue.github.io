@@ -83,46 +83,44 @@ tags: [Productivity, Software] # add tag
 </style>
 
 <script>
-    function getData(category) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
-        xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                var data = JSON.parse(xhr.responseText);
-                var cardContainer = document.getElementById('cardContainer');
-                cardContainer.innerHTML = '';
-
-                data.row.forEach(function(item) {
-                    var card = document.createElement('div');
-                    card.className = 'card';
-
-                    var img = document.createElement('img');
-                    img.src = item.image_url; // 예시 URL
-                    img.alt = item.area_nm;
-
-                    var cardInfo = document.createElement('div');
-                    cardInfo.className = 'card-info';
-
-                    var title = document.createElement('div');
-                    title.className = 'card-title';
-                    title.textContent = item.area_nm;
-
-                    var statusLabel = document.createElement('div');
-                    statusLabel.className = 'status-label ' + item.congestion_level;
-                    statusLabel.textContent = item.area_congest_lvl;
-
-                    cardInfo.appendChild(title);
-                    cardInfo.appendChild(statusLabel);
-                    card.appendChild(img);
-                    card.appendChild(cardInfo);
-
-                    cardContainer.appendChild(card);
-                });
-            } else {
-                console.error('The request failed!');
-            }
-        };
-        xhr.send();
-    }
+    <script>
+        function getData(category) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=115&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    var data = JSON.parse(xhr.responseText);
+                    var cardContainer = document.getElementById('cardContainer');
+                    cardContainer.innerHTML = ''; // 이전 카드를 모두 지웁니다.
+                    data.row.forEach(function(item) {
+                        var card = document.createElement('div');
+                        card.className = 'card';
+                        
+                        var img = document.createElement('img');
+                    
+                        img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg';
+                        img.alt = item.area_nm; // 접근성을 위한 alt 텍스트
+                        var cardInfo = document.createElement('div');
+                        cardInfo.className = 'card-info';
+                        var title = document.createElement('div');
+                        title.className = 'card-title';
+                        title.textContent = item.area_nm;
+                        var statusLabel = document.createElement('div');
+                        statusLabel.className = 'status-label';
+                        statusLabel.style.backgroundColor = item.congestion_color;
+                        statusLabel.textContent = item.area_congest_lvl;
+                        cardInfo.appendChild(title);
+                        cardInfo.appendChild(statusLabel);
+                        card.appendChild(img); // 이미지 추가
+                        card.appendChild(cardInfo);
+                        cardContainer.appendChild(card);
+                    });
+                } else {
+                    console.error('The request failed!');
+                }
+            };
+            xhr.send();
+        }
+    </script>
 </script>
 <!-- HTML과 JavaScript 코드 끝 -->
