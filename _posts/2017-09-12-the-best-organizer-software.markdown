@@ -8,7 +8,7 @@ tags: [Productivity, Software] # add tag
 ---
 ## 서울 관광지 혼잡도
 
-SUE AND MOON 서울 데이트 할 장소를 찾아보자요:two_hearts:
+:couple_with_heart: SUE AND MOON 서울 데이트 할 장소를 찾아보자요:two_hearts:
 
 <!-- HTML과 JavaScript 코드 시작 -->
 <div class="button-container">
@@ -21,7 +21,7 @@ SUE AND MOON 서울 데이트 할 장소를 찾아보자요:two_hearts:
 </div>
 
 <div id="cardContainer" class="card-container">
-    <!-- 카드들이 여기에 들어갑니다 -->
+   
 </div>
 
 <style>
