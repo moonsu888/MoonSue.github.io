@@ -1,125 +1,39 @@
-<!DOCTYPE html>
-<html lang="kr">
-<head>
-    <meta charset="UTF-8">
-    <title>서울 공공 데이터 UI</title>
-    <style>
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px; /* 카드 사이의 간격 */
-        }
-        .card {
-            width: 250px; /* 카드의 폭 */
-            border-radius: 10px; /* 카드의 모서리 둥글기 */
-            overflow: hidden; /* 이미지가 모서리 둥글기에 맞춰서 잘림 */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
-            background: #fff; /* 카드 배경색 */
-        }
-        .card img {
-            width: 100%; /* 이미지가 카드 폭에 맞춰짐 */
-            height: 150px; /* 이미지 높이 */
-            object-fit: cover; /* 이미지 비율 유지하면서 채움 */
-        }
-        .card-info {
-            padding: 15px;
-        }
-        .card-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin: 5px 0; /* 제목 위아래 여백 */
-        }
-        .status-label {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 20px;
-            color: #fff; /* 글자색 */
-            text-align: center;
-            margin-top: 10px;
-        }
-        .busy { background: #DD1F3D; }
-        .moderate { background: #FF8040; }
-        .calm { background: #FFB100; }
-        .button-container {
-            margin-top: 20px;
-            margin-bottom: 30px;
-        }
-        .button {
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-            margin-right: 10px;
-            border: none;
-            outline: none;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-    <h1>서울 지역 혼잡도 정보</h1>
-    <div class="button-container">
-        <button class="button" onclick="getData('전체보기')">전체보기</button>
-        <button class="button" onclick="getData('관광특구')">관광특구</button>
-        <button class="button" onclick="getData('공원')">공원</button>
-        <button class="button" onclick="getData('고궁·문화유산')">고궁·문화유산</button>
-        <button class="button" onclick="getData('발달상권')">발달상권</button>
-        <button class="button" onclick="getData('인구밀집지역')">인구밀집지역</button>
+---
+layout: home
+---
+
+{% if paginator.page %}
+  {% assign offset = paginator.page | minus:1 | times:paginator.per_page %}
+  {% assign currentPage = paginator.page %}
+{% else %}
+  {% assign offset = 0 %}
+  {% assign currentPage = 1 %}
+{% endif %}
+
+{% include header.html %}
+<div class="c-posts o-opacity" data-page="{{ currentPage }}" data-totalPages="{{ paginator.total_pages }}">
+  {% for post in site.posts limit:site.paginate offset:offset %}
+  <article class="c-post">
+    {% if post.image %}
+    <a class="c-post-thumbnail o-opacity" style="background-image: url({{"/images/" | prepend: site.baseurl | append : post.image}})"
+        href="{{post.url | prepend: site.baseurl}}"></a>
+    {% else %} {% endif %}
+    <div class="c-post-content">
+      <h2 class="c-post-title">
+        <a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a>
+      </h2>
+      <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
+      <span class="c-post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
+      <span class="c-post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words |
+          plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
     </div>
+  </article> <!-- /.c-post -->
+  {% endfor %}
+</div> <!-- /.c-posts -->
 
-    <div id="cardContainer" class="card-container">
-        <!-- 카드들이 여기에 들어갑니다 -->
-    </div>
-
-    <script>
-        function getData(category) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://data.seoul.go.kr/SeoulRtd/getCategoryList?page=1&category=" + encodeURIComponent(category) + "&count=115&sort=true", true);
-            xhr.onload = function () {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    var data = JSON.parse(xhr.responseText);
-                    var cardContainer = document.getElementById('cardContainer');
-                    cardContainer.innerHTML = ''; // 이전 카드를 모두 지웁니다.
-
-                    data.row.forEach(function(item) {
-                        var card = document.createElement('div');
-                        card.className = 'card';
-                        
-                        var img = document.createElement('img');
-                    
-                        img.src = 'https://cdn.ekw.co.kr/news/photo/202008/10197_10652_4054.jpg';
-                        img.alt = item.area_nm; // 접근성을 위한 alt 텍스트
-
-                        var cardInfo = document.createElement('div');
-                        cardInfo.className = 'card-info';
-
-                        var title = document.createElement('div');
-                        title.className = 'card-title';
-                        title.textContent = item.area_nm;
-
-                        var statusLabel = document.createElement('div');
-                        statusLabel.className = 'status-label';
-                        statusLabel.style.backgroundColor = item.congestion_color;
-                        statusLabel.textContent = item.area_congest_lvl;
-
-                        cardInfo.appendChild(title);
-                        cardInfo.appendChild(statusLabel);
-                        card.appendChild(img); // 이미지 추가
-                        card.appendChild(cardInfo);
-
-                        cardContainer.appendChild(card);
-                    });
-                } else {
-                    console.error('The request failed!');
-                }
-            };
-            xhr.send();
-        }
-    </script>
-</body>
-</html>
-
+{% assign postCount = site.posts | size %}
+{% assign postsCovered = site.paginate | plus:offset %}
+{% if postsCovered < postCount %}
+  <button class="c-load-more c-btn c-btn--middle">Load more posts</button>
+{% endif %}
+{% include categories.html %}
